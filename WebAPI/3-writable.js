@@ -1,6 +1,6 @@
 'use strict';
 
-const createWritable = async () => {
+const createWritable = () => {
   const chunks = [];
   const writableStream = new WritableStream({
     write(chunk) {
@@ -22,7 +22,7 @@ const main = async () => {
   const url = 'https://developer.mozilla.org/';
   const { body } = await fetch(url);
 
-  const { writableStream, chunks } = await createWritable();
+  const { writableStream, chunks } = createWritable();
   const writer = writableStream.getWriter();
 
   for await (const chunk of body) {
